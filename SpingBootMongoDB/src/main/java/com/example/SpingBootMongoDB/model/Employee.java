@@ -8,7 +8,7 @@ import java.util.Date;
 @Document(collection = "employee")
 public class Employee {
 
-    @Field(value = "emp_id")
+    @Field(value = "_id")
     private int id;
 
     @Field(value = "emp_fullname")
@@ -29,12 +29,21 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String fullName, String sex, Date birthDay, String address, String phone) {
+    public Employee(int id, String fullName, String sex, Date birthDay, String address, String phone) {
+        this.id = id;
         this.fullName = fullName;
         this.sex = sex;
         this.birthDay = birthDay;
         this.address = address;
         this.phone = phone;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFullName() {
