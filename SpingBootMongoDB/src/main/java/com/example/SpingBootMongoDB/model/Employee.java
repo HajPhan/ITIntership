@@ -11,32 +11,24 @@ public class Employee {
     @Field(value = "_id")
     private int id;
 
-    @Field(value = "emp_fullname")
+    @Field(value = "fullname")
     private String fullName;
 
-    @Field(value = "emp_sex")
+    @Field(value = "sex")
     private String sex;
 
-    @Field(value = "emp_birthday")
-    private Date birthDay;
+    @Field(value = "birthday")
+    private String birthDay;
 
-    @Field(value = "emp_address")
+    @Field(value = "address")
     private String address;
 
-    @Field(value = "emp_phone")
+    @Field(value = "phone")
     private String phone;
 
     public Employee() {
     }
 
-    public Employee(int id, String fullName, String sex, Date birthDay, String address, String phone) {
-        this.id = id;
-        this.fullName = fullName;
-        this.sex = sex;
-        this.birthDay = birthDay;
-        this.address = address;
-        this.phone = phone;
-    }
 
     public int getId() {
         return id;
@@ -62,11 +54,11 @@ public class Employee {
         this.sex = sex;
     }
 
-    public Date getBirthDay() {
+    public String getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
     }
 
