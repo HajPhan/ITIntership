@@ -59,8 +59,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
 
         http.authorizeRequests()
-                .antMatchers("/", "login/**", "/logout/**", "/js/**", "/css/**", "/demo/**").permitAll()
-                .antMatchers("/userInfo/**", "/user-view/**").access("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+                .antMatchers("/login/**", "/logout/**", "/register/**", "/js/**", "/css/**").permitAll()
+                .antMatchers("/", "/userInfo/**", "/user-view/**").access("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
                 .antMatchers("/admin/**", "/user-save/**", "/user-update/**", "/deleteUser/**").access("hasRole('ROLE_ADMIN')")
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")

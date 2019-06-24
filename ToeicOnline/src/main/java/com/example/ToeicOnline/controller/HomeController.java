@@ -25,12 +25,22 @@ public class HomeController {
 
     @RequestMapping(value = "/login")
     public String login(){
-        return "login-page";
+        return "/admin/page-login";
     }
 
     @RequestMapping(value = "/logout")
     public String logoutSuccess(Model model){
         return "redirect:/login?message=logout";
+    }
+
+    @RequestMapping(value = "/forget")
+    public String forget(Model model){
+        return "/admin/page-forget";
+    }
+
+    @RequestMapping(value = "/register")
+    public String register(Model model){
+        return "/admin/page-register";
     }
 
     @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
