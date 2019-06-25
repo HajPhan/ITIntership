@@ -19,27 +19,27 @@ public class HomeController {
     private UserService userService;
 
     @RequestMapping(value = "/")
-    public String home(){
+    public String home() {
         return "home";
     }
 
     @RequestMapping(value = "/login")
-    public String login(){
+    public String login() {
         return "/admin/page-login";
     }
 
     @RequestMapping(value = "/logout")
-    public String logoutSuccess(Model model){
+    public String logoutSuccess(Model model) {
         return "redirect:/login?message=logout";
     }
 
     @RequestMapping(value = "/forget")
-    public String forget(Model model){
+    public String forget(Model model) {
         return "/admin/page-forget";
     }
 
     @RequestMapping(value = "/register")
-    public String register(Model model){
+    public String register(Model model) {
         return "/admin/page-register";
     }
 
@@ -47,11 +47,11 @@ public class HomeController {
     public String userInfo(Model model, Principal principal) {
         String userName = principal.getName();
         System.out.println("User name: " + userName);
-        User user = (User)((Authentication)principal).getPrincipal();
+        User user = (User) ((Authentication) principal).getPrincipal();
 
         String userInfo = WebUtils.toString(user);
-        model.addAttribute("userInfo",userInfo);
-        model.addAttribute("userList",this.userService.getAllUser());
+        model.addAttribute("userInfo", userInfo);
+        model.addAttribute("userList", this.userService.getAllUser());
         return "user-page";
     }
 
@@ -60,24 +60,29 @@ public class HomeController {
         User user = (User) ((Authentication) principal).getPrincipal();
 
         String userInfo = WebUtils.toString(user);
-        model.addAttribute("userInfo",userInfo);
+        model.addAttribute("userInfo", userInfo);
 
-        model.addAttribute("userList",this.userService.getAllUser());
+        model.addAttribute("userList", this.userService.getAllUser());
 
         return "admin-page";
     }
 
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String userPage(Model model, Principal principal) {
+        return "/user/user-page";
+    }
+
     @RequestMapping(value = "/403")
-    public String accessDenied(Model model, Principal pirPrincipal){
-        if (pirPrincipal != null){
-            User loginedUser = (User)((Authentication)pirPrincipal).getPrincipal();
+    public String accessDenied(Model model, Principal pirPrincipal) {
+        if (pirPrincipal != null) {
+            User loginedUser = (User) ((Authentication) pirPrincipal).getPrincipal();
 
             String userInfo = WebUtils.toString(loginedUser);
 
-            model.addAttribute("userInfo",userInfo);
+            model.addAttribute("userInfo", userInfo);
 
             String message = "Hi " + pirPrincipal.getName() + "<br> You do not have permission to access this page!";
-            model.addAttribute("message",message);
+            model.addAttribute("message", message);
         }
         return "403-page";
     }

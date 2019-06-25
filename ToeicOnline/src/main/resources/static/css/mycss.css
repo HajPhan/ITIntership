@@ -110,3 +110,69 @@ label, input {
 .pagination a:hover:not(.active) {
     background-color: #ddd;
 }
+
+<!-- Test Toeic  -->
+.toeic_center{
+    border: 1px solid #d6e4f1;
+    width: 98%;
+    display: block;
+    float: right;
+    position: relative;
+}
+
+.toeic_box_start{
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.toeic_title{
+    /*background: #ff7e00;*/
+    background: #118931;
+    font-size: 18px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    padding-left: 35px;
+    font-weight: bold;
+    display: block;
+}
+
+.space20{
+    height: 20px;
+    clear: both;
+}
+
+#toeic_start{
+    background-color: rgba(0, 0, 0, 0);
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-image: url("images/start.png");
+    background-size: auto;
+    background-origin: padding-box;
+    background-clip: border-box;
+
+    border-top-color: currentcolor;
+    border-top-style: none;
+    border-top-width: 0px;
+    border-right-color: currentcolor;
+    border-right-style: none;
+    border-right-width: 0px;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: 0px;
+    border-left-color: currentcolor;
+    border-left-style: none;
+    border-left-width: 0px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+
+    height: 49px;
+    width: 122px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}

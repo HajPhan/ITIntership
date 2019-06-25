@@ -1,6 +1,7 @@
 package com.example.ToeicOnline.configuration;
 
 import com.example.ToeicOnline.service.UserDetailsServiceImpl;
+import com.example.ToeicOnline.utils.MySimpleUrlAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
@@ -27,6 +29,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsServiceImpl userDetailsSerives;
+
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+        return new MySimpleUrlAuthenticationSuccessHandler();
+    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -60,7 +67,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/login/**", "/logout/**", "/register/**", "/js/**", "/css/**").permitAll()
-                .antMatchers("/", "/userInfo/**", "/user-view/**").access("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+                .antMatchers("/", "/user/**", "/userInfo/**", "/user-view/**").access("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
                 .antMatchers("/admin/**", "/user-save/**", "/user-update/**", "/deleteUser/**").access("hasRole('ROLE_ADMIN')")
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
@@ -68,7 +75,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginProcessingUrl("/j_spring_security_check")
                 .loginPage("/login")
-                .defaultSuccessUrl("/userInfo")
+//                .defaultSuccessUrl("/user")
+                .successHandler(myAuthenticationSuccessHandler())
                 .failureForwardUrl("/login?message=error")
                 .usernameParameter("username")
                 .passwordParameter("password")
