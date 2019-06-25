@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Toeic Full Test</title>
+    <link rel="stylesheet" href="/css/mycss.css">
+    <script type="text/javascript" src="/js/clock-timer.js"></script>
+</head>
+<body>
+    <div class="comment_bai_hoc clear">
+        <div class="ghichu0 clear bo_goc">
+            <h1 class="title_lesson">TOIEC Full Test</h1>
+        </div>
+        <h2 class="gthieu" style="text-align: center;">Người học làm bài thi mô phỏng bài thi TOEIC thực tế. Bài thi chỉ có
+            trên TiengAnh123.Com!</h2>
+
+        <div class="details" style="padding: 0">
+            <span id="fulltest"></span>
+            <div id="tickerbg" style="position: absolute;"></div>
+            <div id="ticker" style="position: absolute;"></div>
+
+            <div class="basic_box">
+                <div class="toeic_center">
+                    <div class="toeic_box_ctrlbt" style="display: block;">
+                        <div class="toeic_title">
+                            Full Test 1
+                            <div class="toeic_title_r">
+                                Questions
+                                <span class="toeic_inx">0</span>
+                                /
+                                <span class="toeic_number">200</span>
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+<!--                            <span id="m"></span>-->
+<!--                            <span id="s"></span>-->
+                            <div id="container"><span id="m">120</span>:<span id="s">00</span></div>
+<!--                            <div id="container">120:00</div>-->
+                            <button class="toeic_btctrl toeic_listen" type="button" onclick="start()">Click vào đây
+                                để thi phần nghe
+                            </button>
+                            <button class="toeic_btctrl toeic_read" type="button" onclick="start()">Click vào đây để
+                                thi phần đọc
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

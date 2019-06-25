@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/css/mycss.css">
+    <script type="text/javascript" src="/js/clock-timer.js"></script>
 </head>
 <body>
 <div class="toeic_center">
@@ -18,8 +19,8 @@
         </div>
         <div class="space20"></div>
         <center>
-            <button id="toeic_start" type="button" onclick=""></button>
-            <form action="#" method="post">
+            <button id="toeic_start" type="button" onclick="start()"></button>
+            <form th:action="@{/full-test}" method="post">
                 <input type="submit" name="Start">
             </form>
         </center>

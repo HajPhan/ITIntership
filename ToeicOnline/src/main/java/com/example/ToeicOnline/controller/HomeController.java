@@ -64,7 +64,7 @@ public class HomeController {
 
         model.addAttribute("userList", this.userService.getAllUser());
 
-        return "admin-page";
+        return "/admin/admin-page";
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
