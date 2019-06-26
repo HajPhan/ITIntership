@@ -7,7 +7,8 @@ import java.sql.Timestamp;
 @Table(name = "user")
 public class UserEntity {
     private long userid;
-    private String name;
+    private String username;
+    private String mail;
     private String password;
     private String fullname;
     private Timestamp createddate;
@@ -23,13 +24,23 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "name")
-    public String getName() {
-        return name;
+    @Column(name = "username")
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Basic
+    @Column(name = "mail")
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     @Basic
@@ -70,7 +81,8 @@ public class UserEntity {
         UserEntity user = (UserEntity) o;
 
         if (userid != user.userid) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+        if (username != null ? !username.equals(user.username) : user.username != null) return false;
+        if (mail != null ? !mail.equals(user.mail) : user.mail != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (fullname != null ? !fullname.equals(user.fullname) : user.fullname != null) return false;
         if (createddate != null ? !createddate.equals(user.createddate) : user.createddate != null) return false;
@@ -81,7 +93,8 @@ public class UserEntity {
     @Override
     public int hashCode() {
         int result = (int) (userid ^ (userid >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (mail != null ? mail.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (fullname != null ? fullname.hashCode() : 0);
         result = 31 * result + (createddate != null ? createddate.hashCode() : 0);

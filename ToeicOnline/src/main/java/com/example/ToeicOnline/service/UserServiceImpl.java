@@ -12,8 +12,14 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public UserEntity getUserByName(String name) {
-        return this.userRepository.findUserByName(name);
+    public boolean saveUser(UserEntity entity) {
+        this.userRepository.save(entity);
+        return true;
+    }
+
+    @Override
+    public UserEntity getUserByUsernameOrMail(String mail) {
+        return this.userRepository.findUserByUsernameOrMail(mail);
     }
 
     @Override

@@ -4,7 +4,9 @@ import com.example.ToeicOnline.model.UserEntity;
 
 public interface UserService {
 
-    UserEntity getUserByName(String name);
+    boolean saveUser(UserEntity entity);
+
+    UserEntity getUserByUsernameOrMail(String mail);
 
     Iterable<UserEntity> getAllUser();
 }
