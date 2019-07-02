@@ -2,14 +2,15 @@ package com.example.SpingBootMongoDB.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 @Document(collection = "employee")
 public class Employee {
 
-    @Field(value = "_id")
-    private int id;
+//    @Field(value = "_id")
+//    private int id;
 
     @Field(value = "fullname")
     private String fullName;
@@ -18,7 +19,8 @@ public class Employee {
     private String sex;
 
     @Field(value = "birthday")
-    private String birthDay;
+    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME)
+    private Date birthDay;
 
     @Field(value = "address")
     private String address;
@@ -29,14 +31,21 @@ public class Employee {
     public Employee() {
     }
 
-
-    public int getId() {
-        return id;
+    public Employee(String fullName, String sex, Date birthDay, String address, String phone) {
+        this.fullName = fullName;
+        this.sex = sex;
+        this.birthDay = birthDay;
+        this.address = address;
+        this.phone = phone;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    //    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getFullName() {
         return fullName;
@@ -54,11 +63,11 @@ public class Employee {
         this.sex = sex;
     }
 
-    public String getBirthDay() {
+    public Date getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(String birthDay) {
+    public void setBirthDay(Date birthDay) {
         this.birthDay = birthDay;
     }
 
